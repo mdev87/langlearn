@@ -10,6 +10,13 @@ class Question extends Model
     /** @use HasFactory<\Database\Factories\QuestionFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'text',
+        'type',
+        'difficulty',
+    ];
+
+
     public function lesson() {
         return $this->belongsTo(Lesson::class);
     }
@@ -22,7 +29,7 @@ class Question extends Model
         return $this->hasMany(TextAnswer::class);
     }
 
-    public function users() {
-        return $this->belongsToMany(User::class, 'user_answers');
+    public function userAnswers() {
+        return $this->belongsToMany(User::class)->using(UserAnswer::class);
     }
 }

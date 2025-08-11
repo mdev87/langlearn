@@ -47,15 +47,13 @@ class User extends Authenticatable
     }
 
 
-    public function questions() {
-        return $this->belongsToMany(Question::class, 'user_answers');
+    public function answers()
+    {
+        return $this->hasMany(UserAnswer::class);
     }
 
-    public function selectedOptions() {
-        return $this->belongsToMany(SelectOption::class, 'user_answers')->withPivot('selected_option_id');
-    }
-
-    public function lessons() {
-        return $this->belongsToMany(Lesson::class);
+    public function lessons()
+    {
+        return $this->belongsToMany(Lesson::class)->using(UserLesson::class);
     }
 }

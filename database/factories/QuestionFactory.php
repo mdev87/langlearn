@@ -18,7 +18,7 @@ class QuestionFactory extends Factory
     {
         return [
             'text' => fake()->text(),
-            'type' => fake()->numberBetween(1, 3),
+            'type' => fake()->randomElement(['text', 'select']),
             'difficulty' => fake()->numberBetween(1, 5)
         ];
     }

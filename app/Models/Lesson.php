@@ -10,15 +10,20 @@ class Lesson extends Model
     /** @use HasFactory<\Database\Factories\LessonFactory> */
     use HasFactory;
 
-    public function category() {
+    protected $fillable = [
+        'title',
+        'description'
+    ];
+
+
+
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 
-    public function questions() {
+    public function questions()
+    {
         return $this->hasMany(Question::class);
-    }
-
-    public function users() {
-        return $this->belongsToMany(User::class);
     }
 }

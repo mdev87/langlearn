@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Lesson::class)->constrained()->noActionOnDelete()->cascadeOnUpdate();
             $table->text('text');
-            $table->tinyInteger('type');
+            $table->enum('type', ['text', 'select']);
             $table->integer('difficulty');
             $table->timestamps();
         });

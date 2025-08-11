@@ -10,6 +10,10 @@ class TextAnswer extends Model
     /** @use HasFactory<\Database\Factories\TextAnswerFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'expected_answer',
+    ];
+
     public function question() {
         return $this->belongsTo(Question::class);
     }
